@@ -20,8 +20,9 @@
                         Descripción,
                         Adjuntos:[],
                         Puntaje
-                        },...
-                    ]
+                    },...
+                ]
             },...
        ]
+    }
 }
