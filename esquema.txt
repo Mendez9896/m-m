@@ -1,28 +1,43 @@
-{
-    Usuarios:{
-        IdUsuario,
-        Codigo,
-        Password,
-        Nombre,
-        Puntaje,
-        Contacto 
-        Preguntas:[
-            {
-                IdPregunta,
-                Clasificación:[],
-                Título,
-                Descripción,
-                Adjuntos:[],
-                Respuestas:[
-                    {
-                        IdRespuesta,
-                        Titulo
-                        Descripción,
-                        Adjuntos:[],
-                        Puntaje
-                    },...
-                ]
-            },...
-       ]
+db.createCollection("Usuarios",
+    {
+        validator: {
+            $and: [
+                {  Codigo: {  $type: "number" }},
+                {  Password: {  $type: "string"  }},
+                {  Nombre: {  type: "string"  }},
+                {  Puntaje: {  $type: "number"}},
+                {  Contacto: {  type: "string"  }},
+                {  Preguntas: {
+                        $type: "objectId",
+                    }
+                }
+            ]
+        }
     }
-}
+);
+{
+        Codigo:,
+            Password,
+            Nombre,
+            Puntaje,
+            Contacto
+            Preguntas:[
+                {
+                    IdPregunta,
+                    Clasificación:[],
+                    Título,
+                    Descripción,
+                    Adjuntos:[],
+                    Respuestas:[
+                        {
+                            IdRespuesta,
+                            Titulo
+                            Descripción,
+                            Adjuntos:[],
+                            Puntaje
+                        },...
+                    ]
+                },...
+           ]
+
+    }
