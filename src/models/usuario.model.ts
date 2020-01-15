@@ -1,20 +1,7 @@
 import { Document, Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import preguntaSchema,{IPregunta} from './pregunta.model'
 
-interface IRespuesta extends Document{
-    titulo: string,
-    descripcion: string,
-    adjuntos: string[],
-    puntaje: number,
-    correcto: boolean
-}
-
-interface IPregunta extends Document{
-    titulo: string,
-    descripcion: string,
-    adjuntos: string[],
-    respuesta: IRespuesta[]
-}
 
 export interface IUsuario extends Document {
     codigo: number;
@@ -26,55 +13,6 @@ export interface IUsuario extends Document {
     encryptPassword(pass: string): Promise<string>;
     validatePassword(pass: string): Promise<boolean>;
 }
-
-const respuestaSchema = new Schema({
-    titulo: {
-        type: String,
-        required: true,
-        min: 5,
-        uppercase: true
-    },
-    descripcion: {
-        type: String,
-        required: true,
-        min: 5
-    },
-    adjuntos: {
-        type: [String],
-        required: true
-    },
-    puntaje: {
-        type: Number,
-        required: true
-    },
-    correcto: {
-        type: Boolean,
-        required: true
-    }
-});
-
-const preguntaSchema = new Schema({
-    titulo: {
-        type: String,
-        required: true,
-        min: 5,
-        uppercase: true
-    },
-    descripcion: {
-        type: String,
-        required: true,
-        min: 5
-    },
-    adjuntos: {
-        type: [String],
-        required: true
-    },
-    respuesta: {
-        type: [respuestaSchema],
-        required: true
-    }
-});
-
 const usuarioSchema = new Schema({
     codigo: {
         type: Number,
@@ -116,4 +54,5 @@ usuarioSchema.methods.validatePassword = async function (pass: string):Promise<b
     return await bcrypt.compare(pass, this.pass);
 };
 
-export default model<IUsuario>('Usuario', usuarioSchema);
+export default  model<IUsuario>('Usuario', usuarioSchema);
+
