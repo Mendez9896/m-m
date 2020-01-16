@@ -1,12 +1,11 @@
 import { Document, Schema, model } from 'mongoose';
-import {respuestaSchema, IRespuesta} from './respuesta.model'
 
 export interface IPregunta extends Document{
     titulo: string,
+    id_usuario: String
     descripcion: string,
     calificacion: string,
-    adjuntos: string[],
-    respuesta: IRespuesta[]
+    adjuntos: string[]
 }
 export const preguntaSchema = new Schema({
     titulo: {
@@ -14,6 +13,10 @@ export const preguntaSchema = new Schema({
         required: true,
         min: 5,
         uppercase: true
+    },
+    id_usuario: {
+        type: String,
+        required: true
     },
     descripcion: {
         type: String,
@@ -26,10 +29,6 @@ export const preguntaSchema = new Schema({
     },
     adjuntos: {
         type: [String],
-        required: true
-    },
-    respuestas: {
-        type: [respuestaSchema],
         required: true
     }
 });

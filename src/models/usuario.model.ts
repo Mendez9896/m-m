@@ -1,6 +1,5 @@
 import { Document, Schema, model } from 'mongoose';
-import bcrypt from 'bcryptjs';
-import {preguntaSchema,IPregunta} from './pregunta.model'
+import bcrypt from 'bcryptjs'
 
 
 export interface IUsuario extends Document {
@@ -9,7 +8,6 @@ export interface IUsuario extends Document {
     password: string,
     puntaje: number,
     contacto: string
-    preguntas: IPregunta[]
     encryptPassword(pass: string): Promise<string>;
     validatePassword(pass: string): Promise<boolean>;
 }
@@ -38,10 +36,6 @@ const usuarioSchema = new Schema({
         type: String,
         required: true,
         min: 5
-    },
-    preguntas: {
-        type: [preguntaSchema],
-        required: true
     }
 });
 

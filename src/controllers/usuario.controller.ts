@@ -17,10 +17,10 @@ export async function obtenerUsuarios(req: Request, res: Response){
 
 export async function login(req: Request, res: Response) {
     let user: IUsuario = Object.assign(req.body);
-    const usuarioEncontrado = await Usuario.findOne({nombre: user.nombre});
-    if(!usuarioEncontrado) return res.status(404).json("Usuario no encontrado");
+    const usuarioEncontrado = await Usuario.findOne({codigo: user.codigo});
+    if(!usuarioEncontrado) return res.status(404).json("Credenciales incorrectos");
     const correctPass: boolean = await usuarioEncontrado.validatePassword(user.password);
-    if(!correctPass) return res.status(404).json("Password incorrecto");
+    if(!correctPass) return res.status(404).json("Credenciales incorrectos");
 
     let token: string = jwt.sign(
         {
