@@ -20,9 +20,9 @@ export const preguntaSchema = new Schema({
         required: true,
         min: 5
     },
-    calificacion:{
-        type:String,
-        required:true
+    clasificacion:{
+        type: [String],
+        required: true
     },
     adjuntos: {
         type: [String],

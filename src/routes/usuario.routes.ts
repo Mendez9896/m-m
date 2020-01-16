@@ -3,9 +3,9 @@ import { crearUsuario, obtenerUsuarios, login, listUsuarios } from '../controlle
 import { TokenValidation } from '../libs/verifyToken';
 
 const router = Router();
-router.route('/operaciones')
+router.route('/create')
     .post(crearUsuario)
-    .get(obtenerUsuarios);
+
 
 router.route('/login')
     .post(login)

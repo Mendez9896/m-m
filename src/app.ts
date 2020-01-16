@@ -2,6 +2,7 @@ import express, {Application} from 'express';
 import morgan from 'morgan';
 import IndexRoutes from './routes/index.routes';
 import UsuarioRoutes from './routes/usuario.routes';
+import PreguntaRoutes from './routes/pregunta.routes';
 
 export class App{
     private app: Application;
@@ -20,6 +21,7 @@ export class App{
     private routes(){
         this.app.use(IndexRoutes);
         this.app.use('/usuarios', UsuarioRoutes);
+        this.app.use('/preguntas',PreguntaRoutes);
     }
 
     private middlewares() {
