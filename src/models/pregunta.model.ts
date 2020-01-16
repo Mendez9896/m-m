@@ -4,6 +4,7 @@ import respuestaSchema,{IRespuesta} from './respuesta.model'
 export interface IPregunta extends Document{
     titulo: string,
     descripcion: string,
+    calificacion: string,
     adjuntos: string[],
     respuesta: IRespuesta[]
 }
@@ -18,6 +19,10 @@ export const preguntaSchema = new Schema({
         type: String,
         required: true,
         min: 5
+    },
+    calificacion:{
+        type:String,
+        required:true
     },
     adjuntos: {
         type: [String],
