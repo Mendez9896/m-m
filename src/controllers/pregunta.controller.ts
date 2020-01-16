@@ -18,4 +18,23 @@ export async function insertarPregunta(req:Request,res:Response){
     const savePregunta = await preguntaG.save();
     return res.json(savePregunta);
 }
-
+export async function updatePreguntas(req:Request,res:Response){
+    Pregunta.findByIdAndUpdate({_id: req.body._id},{
+        titulo: req.body.titulo,
+        id_usuario: req.body.id_usuario,
+        descripcion: req.body.descripcion,
+        adjuntos: req.body.adjuntos,
+        clasificacion: req.body.clasificacion
+    }).then(()=>{
+        res.json('actualizada con exito');
+    }).catch(err=>{
+        res.status(404).json(err);
+    });
+}
+export function deleteUser(req:Request,res:Response){
+    Pregunta.findByIdAndDelete({_id: req.body._id}).then(()=>{
+        res.json('elemento eliminado con exito');
+    }).catch(err=>{
+        res.status(404).json(err);
+    });
+}
