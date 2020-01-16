@@ -1,5 +1,5 @@
 import { Document, Schema, model } from 'mongoose';
-import respuestaSchema,{IRespuesta} from './respuesta.model'
+import {respuestaSchema, IRespuesta} from './respuesta.model'
 
 export interface IPregunta extends Document{
     titulo: string,
@@ -28,7 +28,7 @@ export const preguntaSchema = new Schema({
         type: [String],
         required: true
     },
-    respuesta: {
+    respuestas: {
         type: [respuestaSchema],
         required: true
     }

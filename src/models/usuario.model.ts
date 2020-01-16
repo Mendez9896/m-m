@@ -1,6 +1,6 @@
 import { Document, Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import preguntaSchema,{IPregunta} from './pregunta.model'
+import {preguntaSchema,IPregunta} from './pregunta.model'
 
 
 export interface IUsuario extends Document {
