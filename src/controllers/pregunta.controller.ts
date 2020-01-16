@@ -14,4 +14,10 @@ export async function busquedaEspecifica(req:Request,res:Response){
     const result= await Pregunta.find({calificacion:{$in:preguntas}});
     return res.json(result);
 }
+export async function insertarPregunta(req:Request,res:Response){
+    let pregunta:IPregunta = Object.assign(req.body);
+    let preguntaG: IPregunta = new Pregunta(pregunta);
+    const savePregunta = await preguntaG.save();
+    return res.json(savePregunta);
+}
 
