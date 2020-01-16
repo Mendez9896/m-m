@@ -9,4 +9,7 @@ router.route('/create')
 router.route('/find')
     .get(buscarPreguntas);
 
+router.route('/findEs')
+    .get(busquedaEspecifica);    
+
 export default router;

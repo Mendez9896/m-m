@@ -7,11 +7,9 @@ export async function buscarPreguntas(req:Request,res:Response){
     return res.json(preguntas);
 }
 export async function busquedaEspecifica(req:Request,res:Response){
-    let preguntas:string[]=[];
-    req.body.calificacion.forEach((element: string)=> {
-        preguntas.push(element);
-    });
-    const result= await Pregunta.find({calificacion:{$in:preguntas}});
+    let preguntas:string[]=Object.assign(req.body.clasificacion);
+    console.log(preguntas);
+    const result= await Pregunta.find({clasificacion:{$in:preguntas}});
     return res.json(result);
 }
 export async function insertarPregunta(req:Request,res:Response){
