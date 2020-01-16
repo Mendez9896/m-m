@@ -2,7 +2,7 @@ import { Document, Schema, model } from 'mongoose';
 
 export interface IPregunta extends Document{
     titulo: string,
-    id_usuario: String
+    id_usuario: string
     descripcion: string,
     calificacion: string,
     adjuntos: string[]
