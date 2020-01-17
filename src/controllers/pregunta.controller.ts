@@ -19,3 +19,25 @@ export async function insertarPregunta(req:Request,res:Response){
     return res.json(savePregunta);
 }
 
+export async function getInfoPregunta(req:Request,res:Response){
+    let pregunta:string =Object.assign(req.body._id);
+    const result= await Pregunta.find({_id: pregunta });
+    return res.json(result);
+}
+
+export async function updatePregunta(req:Request,res:Response){
+    Pregunta.findByIdAndUpdate({ _id : req.body._id},req.body).then( () => {
+        res.json("Actualziacion Correcta")
+    }).catch(err => {
+        res.status(400).json(err);
+    })
+}
+
+export async function deletePregunta(req:Request,res:Response){
+    Pregunta.findOneAndDelete({_id: req.body._id}).then(() => {
+        res.json("Usuario Eliminada");
+      }).catch(err => {
+        res.status(400).json(err);
+      })
+}
+

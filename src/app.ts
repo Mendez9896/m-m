@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import IndexRoutes from './routes/index.routes';
 import UsuarioRoutes from './routes/usuario.routes';
 import PreguntaRoutes from './routes/pregunta.routes';
+import RespuestaRoutes from './routes/respuesta.routes'
 
 export class App{
     private app: Application;
@@ -22,6 +23,7 @@ export class App{
         this.app.use(IndexRoutes);
         this.app.use('/usuarios', UsuarioRoutes);
         this.app.use('/preguntas',PreguntaRoutes);
+        this.app.use('/respuestas',RespuestaRoutes);
     }
 
     private middlewares() {
