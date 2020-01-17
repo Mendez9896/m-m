@@ -1,12 +1,19 @@
 import { Router } from 'express';
 
-import { buscarPreguntas,busquedaEspecifica,insertarPregunta, getInfoPregunta, deletePregunta, updatePregunta } from '../controllers/pregunta.controller';
+import {
+    buscarPreguntas,
+    busquedaEspecifica,
+    insertarPregunta,
+    getInfoPregunta,
+    deletePregunta,
+    updatePregunta,
+    filtrarPregunta
+} from '../controllers/pregunta.controller';
 
 import { TokenValidation } from '../libs/verifyToken';
 const router = Router();
 router.route('/create')
-    .post(insertarPregunta)
-
+    .post(insertarPregunta);
 
 router.route('/find')
     .get(buscarPreguntas);
@@ -19,6 +26,11 @@ router.route('/findInf')
 
 router.route('/update')
     .put(updatePregunta);
-router.route('/delete').delete(deletePregunta);
+
+router.route('/delete')
+    .delete(deletePregunta);
+
+router.route('/search')
+    .post(TokenValidation, filtrarPregunta);
 
 export default router;

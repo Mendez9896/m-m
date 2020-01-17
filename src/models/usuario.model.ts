@@ -45,7 +45,7 @@ usuarioSchema.methods.encryptPassword = async (pass: string):Promise<string> => 
 };
 
 usuarioSchema.methods.validatePassword = async function (pass: string):Promise<boolean>  {
-    return await bcrypt.compare(pass, this.pass);
+    return await bcrypt.compare(pass, this.password);
 };
 
 export default  model<IUsuario>('Usuario', usuarioSchema);

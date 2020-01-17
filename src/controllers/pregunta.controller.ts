@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import Pregunta,{IPregunta} from '../models/pregunta.model';
-import jwt from 'jsonwebtoken';
 
 export async function buscarPreguntas(req:Request,res:Response){
     const preguntas = await Pregunta.find();
@@ -42,3 +41,17 @@ export async function deletePregunta(req:Request,res:Response){
       })
 }
 
+export async function filtrarPregunta(req:Request,res:Response){
+    const text = req.body.text;
+    const preguntas = await Pregunta.find({
+        $or: [
+            {titulo: {
+                    $regex: text, '$options': 'i'
+                }},
+            {descripcion: {
+                    $regex: text, '$options': 'i'
+                }}
+        ]
+    });
+    return res.json(preguntas);
+}
