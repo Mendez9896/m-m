@@ -4,7 +4,7 @@ export interface IPregunta extends Document{
     titulo: string,
     id_usuario: string
     descripcion: string,
-    calificacion: string,
+    clasificacion: string[],
     adjuntos: string[]
 }
 export const preguntaSchema = new Schema({

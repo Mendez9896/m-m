@@ -1,5 +1,7 @@
 import { Router } from 'express';
+
 import { buscarPreguntas,busquedaEspecifica,insertarPregunta, getInfoPregunta, deletePregunta, updatePregunta } from '../controllers/pregunta.controller';
+
 import { TokenValidation } from '../libs/verifyToken';
 const router = Router();
 router.route('/create')

@@ -19,6 +19,7 @@ export async function insertarPregunta(req:Request,res:Response){
     return res.json(savePregunta);
 }
 
+
 export async function getInfoPregunta(req:Request,res:Response){
     let pregunta:string =Object.assign(req.body._id);
     const result= await Pregunta.find({_id: pregunta });

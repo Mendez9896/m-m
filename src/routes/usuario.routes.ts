@@ -1,10 +1,14 @@
 import { Router } from 'express';
-import { crearUsuario, obtenerUsuarios, login, listUsuarios } from '../controllers/usuario.controller';
+import { createUsuario,getUsuario, getUsuarios,updateUsuario,deleteUsuario,login, listUsuarios } from '../controllers/usuario.controller';
 import { TokenValidation } from '../libs/verifyToken';
 
 const router = Router();
-router.route('/create')
-    .post(crearUsuario)
+
+router.route('/create').post(createUsuario);
+router.route('/').get(getUsuarios);
+router.route('/:id').get(getUsuario);
+router.route('/update/:id').put(updateUsuario);
+router.route('/delete/:id').delete(deleteUsuario);
 
 
 router.route('/login')
