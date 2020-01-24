@@ -2,6 +2,7 @@ import { Document, Schema, model } from 'mongoose';
 export interface IRespuesta extends Document{
     titulo: string,
     id_pregunta: string,
+    id_usuario: string,
     descripcion: string,
     adjuntos: string[],
     puntaje: number,
@@ -15,6 +16,10 @@ export const respuestaSchema = new Schema({
         uppercase: true
     },
     id_pregunta: {
+        type: String,
+        required: true
+    },
+    id_usuario:{
         type: String,
         required: true
     },

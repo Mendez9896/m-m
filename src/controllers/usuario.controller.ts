@@ -18,7 +18,7 @@ export async function getUsuario(req: Request, res: Response){
   .then(datos=>{
     res.json(datos);
   }).catch(err => {
-  res.json(err);
+    res.json(err);
   })
 }
 export async function updateUsuario(req: Request, res: Response){
@@ -61,3 +61,5 @@ export function listUsuarios(req: Request, res: Response){
         res.json(err);
     });
 }
+
+

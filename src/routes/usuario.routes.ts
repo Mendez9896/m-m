@@ -9,10 +9,8 @@ router.route('/').get(getUsuarios);
 router.route('/:id').get(getUsuario);
 router.route('/update/:id').put(updateUsuario);
 router.route('/delete/:id').delete(deleteUsuario);
+router.route('/getAll').get(listUsuarios);
 
-
-router.route('/login')
-    .post(login)
-    .get(TokenValidation, listUsuarios);
+router.route('/login').post(login);
 
 export default router;

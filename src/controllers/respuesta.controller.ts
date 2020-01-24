@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
 import Respuesta, { IRespuesta } from '../models/respuesta.model';
 
 export async function insertarRespuesta(req:Request,res:Response){
@@ -29,4 +28,17 @@ export async function deleteRespuesta(req:Request,res:Response){
       }).catch(err => {
         res.status(400).json(err);
       })
+}
+export function getPuntaje(req: Request, res: Response){
+    Respuesta.find({id_usuario: req.params.idUsuario}).exec()
+        .then(datos=>{
+            let puntajeTotal = 0;
+            let todosLosPuntajes = datos.map(a=>a.puntaje);
+            for(let i = 0;i<todosLosPuntajes.length;i++){
+                puntajeTotal += todosLosPuntajes[i];
+            }
+            res.json(puntajeTotal);
+        }).catch(err => {
+            res.json(err);
+        })
 }
