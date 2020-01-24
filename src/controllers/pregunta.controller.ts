@@ -27,7 +27,7 @@ export async function getInfoPregunta(req:Request,res:Response){
 
 export async function updatePregunta(req:Request,res:Response){
     Pregunta.findByIdAndUpdate({ _id : req.body._id},req.body).then( () => {
-        res.json("Actualziacion Correcta")
+        res.json("ActualiZacion Correcta")
     }).catch(err => {
         res.status(400).json(err);
     })
@@ -35,7 +35,7 @@ export async function updatePregunta(req:Request,res:Response){
 
 export async function deletePregunta(req:Request,res:Response){
     Pregunta.findOneAndDelete({_id: req.body._id}).then(() => {
-        res.json("Usuario Eliminada");
+        res.json("Pregunta Eliminada");
       }).catch(err => {
         res.status(400).json(err);
       })

@@ -13,22 +13,22 @@ import {
 import { TokenValidation } from '../libs/verifyToken';
 const router = Router();
 router.route('/create')
-    .post(insertarPregunta);
+    .post(TokenValidation,insertarPregunta);
 
 router.route('/find')
-    .get(buscarPreguntas);
+    .get(TokenValidation,buscarPreguntas);
 
 router.route('/findEs')
-    .get(busquedaEspecifica);   
+    .post(TokenValidation,busquedaEspecifica);   
 
 router.route('/findInf')
-    .get(getInfoPregunta);   
+    .get(TokenValidation,getInfoPregunta);   
 
 router.route('/update')
-    .put(updatePregunta);
+    .put(TokenValidation,updatePregunta);
 
 router.route('/delete')
-    .delete(deletePregunta);
+    .delete(TokenValidation,deletePregunta);
 
 router.route('/search')
     .post(TokenValidation, filtrarPregunta);
