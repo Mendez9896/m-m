@@ -8,13 +8,13 @@ import {
 } from "../controllers/respuesta.controller";
 import { TokenValidation } from "../libs/verifyToken";
 const router = Router();
-router.route("/create").post(insertarRespuesta);
+router.route("/create").post(TokenValidation, insertarRespuesta);
 
-router.route("/find").get(buscarRespuestas);
+router.route("/find").get(TokenValidation, buscarRespuestas);
 
-router.route("/update").put(updateRespuesta);
+router.route("/update").put(TokenValidation, updateRespuesta);
 
-router.route("/delete").delete(deleteRespuesta);
+router.route("/delete").delete(TokenValidation, deleteRespuesta);
 
-router.route("/getPuntaje/:idUsuario").get(getPuntaje);
+router.route("/getPuntaje/:idUsuario").get(TokenValidation, getPuntaje);
 export default router;
