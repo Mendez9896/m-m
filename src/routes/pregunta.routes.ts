@@ -7,10 +7,12 @@ import {
   getInfoPregunta,
   deletePregunta,
   updatePregunta,
-  filtrarPregunta
+  filtrarPregunta,
+  getPreguntas
 } from "../controllers/pregunta.controller";
 
 import { TokenValidation } from "../libs/verifyToken";
+import {getPuntaje} from "../controllers/respuesta.controller";
 const router = Router();
 router.route("/create").post(TokenValidation, insertarPregunta);
 
@@ -25,5 +27,7 @@ router.route("/update").put(TokenValidation, updatePregunta);
 router.route("/delete").delete(TokenValidation, deletePregunta);
 
 router.route("/search").post(TokenValidation, filtrarPregunta);
+
+router.route("/getPreguntas/:idUsuario").get(TokenValidation, getPreguntas);
 
 export default router;

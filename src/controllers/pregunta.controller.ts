@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Pregunta, { IPregunta } from "../models/pregunta.model";
+import Respuesta from "../models/respuesta.model";
 
 export async function buscarPreguntas(req: Request, res: Response) {
   const preguntas = await Pregunta.find();
@@ -63,4 +64,15 @@ export async function filtrarPregunta(req: Request, res: Response) {
     ]
   });
   return res.json(preguntas);
+}
+
+export function getPreguntas(req: Request, res: Response) {
+  Pregunta.find({ id_usuario: req.params.idUsuario })
+      .exec()
+      .then(datos => {
+        res.json(datos);
+      })
+      .catch(err => {
+        res.json(err);
+      });
 }
