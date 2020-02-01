@@ -24,7 +24,7 @@ router.route("/findInf").get(TokenValidation, getInfoPregunta);
 
 router.route("/update").put(TokenValidation, updatePregunta);
 
-router.route("/delete").delete(TokenValidation, deletePregunta);
+router.route("/delete/:idPreg").delete(TokenValidation, deletePregunta);
 
 router.route("/search").post(TokenValidation, filtrarPregunta);
 

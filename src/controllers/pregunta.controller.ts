@@ -36,7 +36,7 @@ export async function updatePregunta(req: Request, res: Response) {
 }
 
 export async function deletePregunta(req: Request, res: Response) {
-  Pregunta.findOneAndDelete({ _id: req.body._id })
+  Pregunta.findOneAndDelete({ _id: req.params.idPreg })
     .then(() => {
       res.json("Pregunta Eliminada");
     })

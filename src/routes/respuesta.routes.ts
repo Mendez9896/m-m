@@ -10,7 +10,7 @@ import { TokenValidation } from "../libs/verifyToken";
 const router = Router();
 router.route("/create").post(TokenValidation, insertarRespuesta);
 
-router.route("/find").get(TokenValidation, buscarRespuestas);
+router.route("/find").post(TokenValidation,buscarRespuestas);
 
 router.route("/update").put(TokenValidation, updateRespuesta);
 
