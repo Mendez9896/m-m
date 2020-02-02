@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import cors from "cors";
 import IndexRoutes from "./routes/index.routes";
 import UsuarioRoutes from "./routes/usuario.routes";
 import PreguntaRoutes from "./routes/pregunta.routes";
@@ -28,6 +29,10 @@ export class App {
 
   private middlewares() {
     //funciones que se ejecutan antes de llamar a funcion rest
+    this.app.use(cors({
+      exposedHeaders: 'token',
+      allowedHeaders: 'token, content-type'
+    }));
     this.app.use(morgan("dev"));
     this.app.use(express.json());
   }
