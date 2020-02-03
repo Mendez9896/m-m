@@ -6,7 +6,7 @@ import {
   updateUsuario,
   deleteUsuario,
   login,
-  listUsuarios
+  listUsuarios, loginStorage
 } from "../controllers/usuario.controller";
 import { TokenValidation } from "../libs/verifyToken";
 
@@ -20,5 +20,6 @@ router.route("/delete/:id").delete(TokenValidation,deleteUsuario);
 //router.route("/getAll").get(listUsuarios);
 
 router.route("/login").post(login);
+router.route("/loginStorage").post(loginStorage);
 
 export default router;

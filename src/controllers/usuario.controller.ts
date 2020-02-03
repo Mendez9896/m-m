@@ -42,6 +42,22 @@ export async function deleteUsuario(req: Request, res: Response) {
     });
 }
 
+export async function loginStorage(req: Request, res: Response) {
+  let user: IUsuario = Object.assign(req.body);
+  const usuarioEncontrado = await Usuario.findOne({ codigo: user.codigo });
+  if (!usuarioEncontrado)
+    return res.status(404).json("Credenciales incorrectos");
+
+  let token: string = jwt.sign(
+      {
+        id: usuarioEncontrado._id
+      },
+      "TEST",
+      { expiresIn: 60 * 60 * 24 }
+  );
+  return res.header("token", token).json(usuarioEncontrado);
+}
+
 export async function login(req: Request, res: Response) {
   let user: IUsuario = Object.assign(req.body);
   const usuarioEncontrado = await Usuario.findOne({ codigo: user.codigo });
