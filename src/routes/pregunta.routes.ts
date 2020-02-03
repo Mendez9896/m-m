@@ -16,7 +16,7 @@ import {getPuntaje} from "../controllers/respuesta.controller";
 const router = Router();
 router.route("/create").post(TokenValidation, insertarPregunta);
 
-router.route("/find").get(TokenValidation, buscarPreguntas);
+router.route("/find").get(TokenValidation,buscarPreguntas);
 
 router.route("/findEs").post(TokenValidation, busquedaEspecifica);
 
